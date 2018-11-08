@@ -15,6 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
 <title>Add User</title>
 <s:form action="addUser">
     <s:textfield name="id" label="ID *" required="true"/>

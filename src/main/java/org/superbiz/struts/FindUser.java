@@ -19,22 +19,19 @@ package org.superbiz.struts;
 
 import org.springframework.stereotype.Component;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.transaction.Transactional;
-import java.util.Properties;
-
 @Component
 public class FindUser {
 
-    private int id;
-    private String errorMessage;
-    private User user;
-    private UserService service;
+    private final UserService service;
 
     public FindUser(UserService service) {
         this.service = service;
     }
+
+
+    private long id;
+    private String errorMessage;
+    private User user;
 
     public User getUser() {
         return user;
@@ -52,7 +49,7 @@ public class FindUser {
         this.errorMessage = errorMessage;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -60,7 +57,7 @@ public class FindUser {
         this.id = id;
     }
 
-    @Transactional
+
     public String execute() {
 
         try {

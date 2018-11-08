@@ -18,20 +18,23 @@
 package org.superbiz.struts;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+
+import javax.transaction.Transactional;
 
 @Component
 public class AddUser {
+
+    private final UserService service;
+
+    public AddUser(UserService service) {
+        this.service = service;
+    }
+
 
     private int id;
     private String firstName;
     private String lastName;
     private String errorMessage;
-    private UserService service;
-
-    public AddUser(UserService service) {
-        this.service = service;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -64,6 +67,7 @@ public class AddUser {
     public void setId(int id) {
         this.id = id;
     }
+
 
     @Transactional
     public String execute() {
